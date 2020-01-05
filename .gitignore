@@ -1,0 +1,24 @@
+# gitignore
+
+# Eclipse
+.project
+.settings/
+.cache-*
+**/.classpath
+.tmpBin/
+
+# Intellij
+.idea/
+*.iml
+/classes/
+
+# Emacs
+*~
+\#*
+bin/
+
+*.batch
+out/
+*.csv
+*.gz
+.DS_Store

@@ -1,4 +1,4 @@
-# Go PASSWORD HASH REST API Example
+# Go PASSWORD HASH REST API Exercise
 A RESTful API for simple password hash service with Go
 
 ## Installation & Run
