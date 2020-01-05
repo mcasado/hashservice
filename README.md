@@ -34,7 +34,11 @@ go build
 
 ## `POST /hash`
 
-#### Creates a base64 encoded password hash given the password in a form field. The request returns an id right away that allows to retrieve the passwrod hash with a get request   
+#### Creates a base64 encoded password hash given the password in a form field. 
+* The request returns an integer id right away that allows to retrieve the password hash with a get request
+* The password hash is available 5 seconds after the request returned the id
+* Password hashes are kept in memory and persisted into a file, , pwd_hash.store, in the directory where the service is started
+    
 
 #### Request
 ```
@@ -202,6 +206,7 @@ shutting down ...
 - [x] Support basic REST APIs.
 - [x] Graceful shutdown
 - [x] Health endpoint
+- [ ] Use a distributed storage solution so we can scale the service up
 - [ ] Write the tests for all APIs.
 - [x] Organize the code with packages
 - [ ] Make docs with GoDoc

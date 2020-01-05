@@ -32,7 +32,7 @@ func (c *Controller) PostHash(w http.ResponseWriter, r *http.Request) {
 		time.Sleep(5 * time.Second)
 		hash := CreateHash(password)
 		c.storage.Set(id, hash)
-		if err := Save("./file.tmp", c.storage.Map()); err != nil {
+		if err := Save("./pwd_hash.store", c.storage.Map()); err != nil {
 			log.Fatalln(err)
 		}
 	}(identifier)

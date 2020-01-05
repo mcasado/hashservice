@@ -11,7 +11,7 @@ var c = NewController(storage)
 
 func init() {
 
-	if err := Load("./file.tmp", &storage.hashes); err != nil {
+	if err := Load("./pwd_hash.store", &storage.hashes); err != nil {
 		log.Println(err)
 	}
 
