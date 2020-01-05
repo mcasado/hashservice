@@ -1,8 +1,9 @@
-package main
+package app
 
 import (
 	"context"
 	"fmt"
+	"github.com/mcasado/hashservice/stats"
 	"log"
 	"net/http"
 	"os"
@@ -10,9 +11,7 @@ import (
 	"sync/atomic"
 	"syscall"
 	"time"
-	"github.com/mcasado/hashservice/stats"
 )
-
 
 var (
 	healthy         int32
@@ -26,7 +25,7 @@ type Server struct {
 }
 
 // NewServer creates a new HTTP Server
-func newServer(port string, h http.Handler, l *log.Logger) *Server {
+func NewServer(port string, h http.Handler, l *log.Logger) *Server {
 	handler := statsMiddleware.Handler(h)
 	return &Server{
 		server: &http.Server{
@@ -42,7 +41,7 @@ func newServer(port string, h http.Handler, l *log.Logger) *Server {
 }
 
 // Run starts the HTTP server
-func (s *Server) run() error {
+func (s *Server) Run() error {
 
 	// Get hostname
 	hostname, err := os.Hostname()

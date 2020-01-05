@@ -6,6 +6,8 @@ import (
 	"log"
 	"os"
 	"time"
+
+	"github.com/mcasado/hashservice/app"
 )
 
 var (
@@ -19,15 +21,15 @@ func main() {
 
 	// create a logger, router and server
 	logger := log.New(os.Stdout, "http: ", log.LstdFlags)
-	router := newRegexRouter()
-	server := newServer(
+	router := app.NewRegexRouter()
+	server := app.NewServer(
 		listenAddr,
-		(Middlewares{Logging(logger), Tracing(func() string { return fmt.Sprintf("%d", time.Now().UnixNano()) })}).Apply(router),
+		(app.Middlewares{app.Logging(logger), app.Tracing(func() string { return fmt.Sprintf("%d", time.Now().UnixNano()) })}).Apply(router),
 		logger,
 	)
 
 	// run our server
-	if err := server.run(); err != nil {
+	if err := server.Run(); err != nil {
 		log.Fatal(err)
 	}
 }

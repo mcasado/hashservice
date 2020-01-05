@@ -1,10 +1,9 @@
-package main
+package app
 
 import (
 	"sync"
 	"sync/atomic"
 )
-
 
 // Storage Interface Supports Get and Set
 type HashStorage interface {

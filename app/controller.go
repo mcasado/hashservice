@@ -1,4 +1,4 @@
-package main
+package app
 
 // Controller passes state to our handlers
 type Controller struct {

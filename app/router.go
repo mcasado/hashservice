@@ -1,4 +1,4 @@
-package main
+package app
 
 import (
 	"log"
@@ -24,7 +24,7 @@ func init() {
 	storage.hashIdentifier = int64(Max(keys))
 }
 
-func newRegexRouter() *regexResolver {
+func NewRegexRouter() *regexResolver {
 
 	rr := newPathResolver()
 	rr.Add("GET /health",  Health)
